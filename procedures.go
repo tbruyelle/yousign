@@ -34,35 +34,45 @@ type Procedure struct {
 }
 
 type ProcedureConfig struct {
-	Email struct {
-		ProcedureStarted  []Msg `json:"procedure.started,omitempty"`
-		ProcedureFinished []Msg `json:"procedure.finished,omitempty"`
-		ProcedureRefused  []Msg `json:"procedure.refused,omitempty"`
-		ProcedureExpired  []Msg `json:"procedure.expired,omitempty"`
-		ProcedureDeleted  []Msg `json:"procedure.deleted,omitempty"`
-		MemberStarted     []Msg `json:"member.started,omitempty"`
-		MemberFinished    []Msg `json:"member.finished,omitempty"`
-		CommentCreated    []Msg `json:"comment.created,omitempty"`
-	} `json:"email,omitempty"`
-	Reminders []struct {
-		Interval *int `json:"interval,omitempty"`
-		Limit    *int `json:"limit,omitempty"`
-		Config   struct {
-			Email struct {
-				ReminderExecuted []Msg `json:"reminder.executed,omitempty"`
-			} `json:"email,omitempty"`
-		} `json:"config,omitempty"`
-	} `json:"reminders,omitempty"`
-	Webhook struct {
-		ProcedureStarted  []Webhook `json:"procedure.started,omitempty"`
-		ProcedureFinished []Webhook `json:"procedure.finished,omitempty"`
-		ProcedureRefused  []Webhook `json:"procedure.refused,omitempty"`
-		ProcedureExpired  []Webhook `json:"procedure.expired,omitempty"`
-		ProcedureDeleted  []Webhook `json:"procedure.deleted,omitempty"`
-		MemberStarted     []Webhook `json:"member.started,omitempty"`
-		MemberFinished    []Webhook `json:"member.finished,omitempty"`
-		CommentCreated    []Webhook `json:"comment.created,omitempty"`
-	} `json:"webhook,omitempty"`
+	Email     ProcedureConfigEmail      `json:"email,omitempty"`
+	Reminders []ProcedureConfigReminder `json:"reminders,omitempty"`
+	Webhook   ProcedureConfigWebhook    `json:"webhook,omitempty"`
+}
+
+type ProcedureConfigEmail struct {
+	ProcedureStarted  []Msg `json:"procedure.started,omitempty"`
+	ProcedureFinished []Msg `json:"procedure.finished,omitempty"`
+	ProcedureRefused  []Msg `json:"procedure.refused,omitempty"`
+	ProcedureExpired  []Msg `json:"procedure.expired,omitempty"`
+	ProcedureDeleted  []Msg `json:"procedure.deleted,omitempty"`
+	MemberStarted     []Msg `json:"member.started,omitempty"`
+	MemberFinished    []Msg `json:"member.finished,omitempty"`
+	CommentCreated    []Msg `json:"comment.created,omitempty"`
+}
+
+type ProcedureConfigReminder struct {
+	Interval *int           `json:"interval,omitempty"`
+	Limit    *int           `json:"limit,omitempty"`
+	Config   ReminderConfig `json:"config,omitempty"`
+}
+
+type ReminderConfig struct {
+	Email ReminderConfigEmail `json:"email,omitempty"`
+}
+
+type ReminderConfigEmail struct {
+	ReminderExecuted []Msg `json:"reminder.executed,omitempty"`
+}
+
+type ProcedureConfigWebhook struct {
+	ProcedureStarted  []Webhook `json:"procedure.started,omitempty"`
+	ProcedureFinished []Webhook `json:"procedure.finished,omitempty"`
+	ProcedureRefused  []Webhook `json:"procedure.refused,omitempty"`
+	ProcedureExpired  []Webhook `json:"procedure.expired,omitempty"`
+	ProcedureDeleted  []Webhook `json:"procedure.deleted,omitempty"`
+	MemberStarted     []Webhook `json:"member.started,omitempty"`
+	MemberFinished    []Webhook `json:"member.finished,omitempty"`
+	CommentCreated    []Webhook `json:"comment.created,omitempty"`
 }
 
 type Msg struct {
