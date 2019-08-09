@@ -1,4 +1,4 @@
-module github.com/Devessier/yousign
+module github.com/tbruyelle/yousign
 
 go 1.12
 
