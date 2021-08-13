@@ -17,7 +17,7 @@ const (
 	productionApiURL = "https://api.yousign.com"
 
 	stagingAppURL    = "https://staging-app.yousign.com"
-	productionAppURL = "https://api.yousign.com"
+	productionAppURL = "https://webapp.yousign.com"
 )
 
 type Client struct {
