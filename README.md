@@ -1,4 +1,4 @@
-# YouSign API client written in Go
+# Yousign API client written in Go
 
 This library doesn't cover all the API, so contributions are welcome.
 
